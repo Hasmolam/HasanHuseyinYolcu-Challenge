@@ -10,6 +10,13 @@ export const battle = (packageId: string, heroId: string, arenaId: string) => {
     // Use tx.object() for both hero and battle place objects
     // The battle winner is determined by hero power comparison
     // Winner takes both heroes
+  tx.moveCall({
+    target: `${packageId}::arena::battle`,
+    arguments: [
+      tx.object(heroId),
+      tx.object(arenaId)
+    ]
+  })
   
   return tx;
 };

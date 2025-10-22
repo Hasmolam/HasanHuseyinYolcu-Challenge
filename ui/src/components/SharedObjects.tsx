@@ -90,7 +90,9 @@ export default function SharedObjects({ refreshKey, setRefreshKey }: RefreshProp
           setRefreshKey(refreshKey + 1);
           setIsBuying(prev => ({ ...prev, [listHeroId]: false }));
         },
-        onError: () => {
+        onError: (error) => {
+          console.error("Buy hero error:", error);
+          alert(`Failed to buy hero: ${error.message || "Unknown error"}`);
           setIsBuying(prev => ({ ...prev, [listHeroId]: false }));
         }
       }
@@ -118,7 +120,9 @@ export default function SharedObjects({ refreshKey, setRefreshKey }: RefreshProp
           setRefreshKey(refreshKey + 1);
           setIsDelisting(prev => ({ ...prev, [listHeroId]: false }));
         },
-        onError: () => {
+        onError: (error) => {
+          console.error("Delist error:", error);
+          alert(`Failed to delist hero: ${error.message || "Unknown error"}`);
           setIsDelisting(prev => ({ ...prev, [listHeroId]: false }));
         }
       }
@@ -147,7 +151,9 @@ export default function SharedObjects({ refreshKey, setRefreshKey }: RefreshProp
           setRefreshKey(refreshKey + 1);
           setIsChangingPrice(prev => ({ ...prev, [listHeroId]: false }));
         },
-        onError: () => {
+        onError: (error) => {
+          console.error("Price change error:", error);
+          alert(`Failed to change price: ${error.message || "Unknown error"}`);
           setIsChangingPrice(prev => ({ ...prev, [listHeroId]: false }));
         }
       }
